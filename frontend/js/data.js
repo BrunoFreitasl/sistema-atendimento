@@ -1,7 +1,7 @@
 // Sistema de Gerenciamento de Dados - Versão Cliente-Servidor
 class DataManager {
     constructor() {
-        this.API_BASE_URL = 'http://localhost:3000/api';
+        this.API_BASE_URL = 'https://api-atendimento-sap.onrender.com';
         console.log('DataManager modo API inicializado. Conectando a:', this.API_BASE_URL);
     }
 
