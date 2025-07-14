@@ -1,0 +1,12 @@
+id,sub_motivo_id,descricao
+MICRO001,SUB001,Senha não funciona
+MICRO002,SUB001,Usuário bloqueado
+MICRO003,SUB001,Esqueci a senha
+MICRO004,SUB002,Como configurar
+MICRO005,SUB002,Parâmetros incorretos
+MICRO006,SUB003,Como usar funcionalidade X
+MICRO007,SUB003,Funcionalidade não aparece
+MICRO008,SUB004,Sistema muito lento
+MICRO009,SUB005,Não consegue conectar
+MICRO010,SUB006,Sistema travou
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Atendimento - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-container">
+                <img id="company-logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiMyNTYzRUIiLz4KPHRleHQgeD0iNTAiIHk9IjU1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U0E8L3RleHQ+Cjwvc3ZnPgo=" alt="Logo da Empresa">
+                <h1>Sistema de Atendimento</h1>
+            </div>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                
+                <div id="login-error" class="error-message" style="display: none;"></div>
+            </form>
+            
+            <div class="login-footer">
+                <p>Primeiro acesso? Entre em contato com o administrador.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
+

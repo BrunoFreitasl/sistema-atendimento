@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Atendimento - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img id="header-logo" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjEwIiBmaWxsPSIjMjU2M0VCIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNBPC90ZXh0Pgo8L3N2Zz4K" alt="Logo">
+                <h1>Sistema de Atendimento</h1>
+            </div>
+            <div class="user-section">
+                <span id="user-name">Usuário</span>
+                <button id="logout-btn" class="btn btn-secondary">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <ul class="nav-menu">
+            <li><a href="#" data-section="dashboard" class="nav-link active">Dashboard</a></li>
+            <li><a href="#" data-section="nova-interacao" class="nav-link">Nova Interação</a></li>
+            <li><a href="#" data-section="historico" class="nav-link">Histórico</a></li>
+            <li class="admin-only"><a href="#" data-section="relatorios" class="nav-link">Relatórios</a></li>
+            <li class="admin-only"><a href="#" data-section="locais" class="nav-link">Gerenciar Locais</a></li>
+            <li class="admin-only"><a href="#" data-section="colaboradores" class="nav-link">Colaboradores</a></li>
+            <li class="admin-only"><a href="#" data-section="palitagem" class="nav-link">Palitagem</a></li>
+            <li><a href="#" data-section="configuracoes" class="nav-link">Configurações</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section id="dashboard-section" class="content-section active">
+            <h2>Dashboard</h2>
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>Interações Hoje</h3>
+                    <p class="card-number" id="interacoes-hoje">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total de Interações</h3>
+                    <p class="card-number" id="total-interacoes">0</p>
+                </div>
+                <div class="card admin-only">
+                    <h3>Locais Cadastrados</h3>
+                    <p class="card-number" id="total-locais">0</p>
+                </div>
+                <div class="card admin-only">
+                    <h3>Colaboradores</h3>
+                    <p class="card-number" id="total-colaboradores">0</p>
+                </div>
+            </div>
+            <div class="welcome-message">
+                <h3 id="welcome-title">Bem-vindo ao Sistema de Atendimento!</h3>
+                <p id="welcome-text">Utilize o menu lateral para navegar pelas funcionalidades do sistema.</p>
+            </div>
+        </section>
+
+        <section id="nova-interacao-section" class="content-section">
+            <h2>Nova Interação</h2>
+            <form id="nova-interacao-form" class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="local-id">ID do Local:</label>
+                        <input type="text" id="local-id" name="local-id" required>
+                        <button type="button" id="buscar-local" class="btn btn-secondary">Buscar</button>
+                    </div>
+                </div>
+                
+                <div id="local-info" class="local-info" style="display: none;">
+                    <h3>Informações do Local</h3>
+                    <div class="info-grid">
+                        <div class="info-item"><strong>Nome:</strong> <span id="local-nome"></span></div>
+                        <div class="info-item"><strong>Telefone:</strong> <span id="local-telefone"></span></div>
+                        <div class="info-item"><strong>Cidade:</strong> <span id="local-cidade"></span></div>
+                        <div class="info-item"><strong>Endereço:</strong> <span id="local-endereco"></span></div>
+                        <div class="info-item"><strong>Gestor:</strong> <span id="local-gestor"></span></div>
+                        <div class="info-item"><strong>Regional:</strong> <span id="local-regional"></span></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pessoa-contatada">Nome da Pessoa Contatada:</label>
+                    <input type="text" id="pessoa-contatada" name="pessoa-contatada" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição do Atendimento:</label>
+                    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                </div>
+
+                <div id="duvidas-container">
+                    <h3>Dúvidas/Motivos</h3>
+                    <div class="duvida-item">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="motivo-macro-1">Motivo Macro:</label>
+                                <select id="motivo-macro-1" name="motivo-macro-1" required>
+                                    <option value="">Selecione...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sub-motivo-1">Sub-motivo:</label>
+                                <select id="sub-motivo-1" name="sub-motivo-1" required>
+                                    <option value="">Selecione...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="motivo-micro-1">Motivo Micro:</label>
+                                <select id="motivo-micro-1" name="motivo-micro-1" required>
+                                    <option value="">Selecione...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="adicionar-duvida" class="btn btn-secondary">Adicionar Outra Dúvida</button>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Registrar Interação</button>
+                    <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="historico-section" class="content-section">
+            <h2>Histórico de Interações</h2>
+            <div class="filters">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="filtro-data-inicio">Data Início:</label>
+                        <input type="date" id="filtro-data-inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="filtro-data-fim">Data Fim:</label>
+                        <input type="date" id="filtro-data-fim">
+                    </div>
+                    <div class="form-group">
+                        <label for="filtro-local">Local:</label>
+                        <input type="text" id="filtro-local" placeholder="ID ou nome do local">
+                    </div>
+                    <div class="form-group">
+                        <button id="aplicar-filtros" class="btn btn-primary">Filtrar</button>
+                        <button id="limpar-filtros" class="btn btn-secondary">Limpar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="historico-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Local</th>
+                            <th>Pessoa Contatada</th>
+                            <th>Descrição</th>
+                            <th>Motivos</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="relatorios-section" class="content-section admin-only">
+            <h2>Relatórios</h2>
+            <div class="filters">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="relatorio-data-inicio">Data Início:</label>
+                        <input type="date" id="relatorio-data-inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="relatorio-data-fim">Data Fim:</label>
+                        <input type="date" id="relatorio-data-fim">
+                    </div>
+                    <div class="form-group">
+                        <label for="relatorio-colaborador">Colaborador:</label>
+                        <select id="relatorio-colaborador">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="gerar-relatorio" class="btn btn-primary">Gerar Relatório</button>
+                        <button id="exportar-csv" class="btn btn-secondary">Exportar CSV</button>
+                        <button id="exportar-xml" class="btn btn-secondary">Exportar XML</button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="relatorio-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Colaborador</th>
+                            <th>Local</th>
+                            <th>Pessoa Contatada</th>
+                            <th>Descrição</th>
+                            <th>Motivos</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="locais-section" class="content-section admin-only">
+            <h2>Gerenciar Locais</h2>
+            <div class="section-actions">
+                <button id="novo-local" class="btn btn-primary">Novo Local</button>
+                <button id="upload-csv" class="btn btn-secondary">Upload CSV</button>
+                <input type="file" id="csv-file" accept=".csv" style="display: none;">
+            </div>
+            
+            <div class="table-container">
+                <table id="locais-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Polo</th>
+                            <th>Gestor</th>
+                            <th>Grupo</th>
+                            <th>Endereço</th>
+                            <th>Telefone</th>
+                            <th>E-mail</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="colaboradores-section" class="content-section admin-only">
+            <h2>Gerenciar Colaboradores</h2>
+            <div class="section-actions">
+                <button id="novo-colaborador" class="btn btn-primary">Novo Colaborador</button>
+            </div>
+            
+            <div class="table-container">
+                <table id="colaboradores-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Usuário</th>
+                            <th>Nível de Acesso</th>
+                            <th>Data Criação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="palitagem-section" class="content-section admin-only">
+            <h2>Gerenciar Palitagem</h2>
+            <div class="palitagem-tabs">
+                <button class="tab-btn active" data-tab="motivos-macro">Motivos Macro</button>
+                <button class="tab-btn" data-tab="sub-motivos">Sub-motivos</button>
+                <button class="tab-btn" data-tab="motivos-micro">Motivos Micro</button>
+            </div>
+            
+            <div id="motivos-macro-tab" class="tab-content active">
+                <div class="section-actions">
+                    <button id="novo-motivo-macro" class="btn btn-primary">Novo Motivo Macro</button>
+                </div>
+                <div class="table-container">
+                    <table id="motivos-macro-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="sub-motivos-tab" class="tab-content">
+                <div class="section-actions">
+                    <button id="novo-sub-motivo" class="btn btn-primary">Novo Sub-motivo</button>
+                </div>
+                <div class="table-container">
+                    <table id="sub-motivos-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Motivo Macro</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="motivos-micro-tab" class="tab-content">
+                <div class="section-actions">
+                    <button id="novo-motivo-micro" class="btn btn-primary">Novo Motivo Micro</button>
+                </div>
+                <div class="table-container">
+                    <table id="motivos-micro-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sub-motivo</th>
+                                <th>Descrição</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuracoes-section" class="content-section">
+            <h2>Configurações</h2>
+            <div class="config-container">
+                <div class="config-section">
+                    <h3>Personalização de Tema</h3>
+                    <div class="form-group">
+                        <label for="tema-select">Tema:</label>
+                        <select id="tema-select">
+                            <option value="azul">Azul (Padrão)</option>
+                            <option value="verde">Verde</option>
+                            <option value="roxo">Roxo</option>
+                            <option value="cinza">Cinza</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="config-section admin-only">
+                    <h3>Logo da Empresa</h3>
+                    <div class="form-group">
+                        <label for="logo-upload">Upload do Logo:</label>
+                        <input type="file" id="logo-upload" accept="image/*">
+                    </div>
+                    <div class="logo-preview">
+                        <img id="logo-preview" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iMTAiIGZpbGw9IiMyNTYzRUIiLz4KPHRleHQgeD0iNTAiIHk9IjU1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U0E8L3RleHQ+Cjwvc3ZnPgo=" alt="Logo Preview">
+                    </div>
+                </div>
+                
+                <div class="config-section admin-only">
+                    <h3>Mensagens de Boas-vindas</h3>
+                    <div class="form-group">
+                        <label for="welcome-title-config">Título:</label>
+                        <input type="text" id="welcome-title-config" value="Bem-vindo ao Sistema de Atendimento!">
+                    </div>
+                    <div class="form-group">
+                        <label for="welcome-text-config">Texto:</label>
+                        <textarea id="welcome-text-config" rows="3">Utilize o menu lateral para navegar pelas funcionalidades do sistema.</textarea>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button id="salvar-configuracoes" class="btn btn-primary">Salvar Configurações</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Título do Modal</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/interacoes.js"></script>
+    <script src="js/locais.js"></script>
+    <script src="js/colaboradores.js"></script>
+    <script src="js/palitagem.js"></script>
+    <script src="js/relatorios.js"></script>
+    <script src="js/configuracoes.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

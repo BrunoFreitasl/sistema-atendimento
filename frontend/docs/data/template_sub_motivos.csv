@@ -1,0 +1,12 @@
+id,motivo_macro_id,descricao
+SUB001,MACRO001,Problemas de Login
+SUB002,MACRO001,Configuração de Sistema
+SUB003,MACRO001,Funcionalidades
+SUB004,MACRO002,Sistema Lento
+SUB005,MACRO002,Erro de Conexão
+SUB006,MACRO002,Falha no Sistema
+SUB007,MACRO003,Nova Funcionalidade
+SUB008,MACRO003,Alteração de Dados
+SUB009,MACRO003,Relatórios
+SUB010,MACRO004,Atendimento
+

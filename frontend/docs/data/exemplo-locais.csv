@@ -1,0 +1,7 @@
+id,polo,gestor,grupo,endereco,numero,complemento,bairro,precificacao,email,telefone1,telefone2,head,gerente,consultorExterno,consultorInterno
+LOC001,Polo Centro,João Silva,Grupo A,Rua das Flores,123,Sala 101,Centro,Tipo 1,centro@empresa.com,(11) 1234-5678,(11) 1234-5679,Maria Santos,Carlos Lima,Ana Costa,Pedro Oliveira
+LOC002,Polo Norte,Maria Oliveira,Grupo B,Av. Principal,456,2º Andar,Zona Norte,Tipo 2,norte@empresa.com,(11) 2345-6789,(11) 2345-6790,José Santos,Lucia Ferreira,Roberto Silva,Fernanda Costa
+LOC003,Polo Sul,Carlos Santos,Grupo A,Rua do Comércio,789,,Vila Sul,Tipo 1,sul@empresa.com,(11) 3456-7890,(11) 3456-7891,Ana Lima,Paulo Rocha,Mariana Dias,Ricardo Alves
+LOC004,Polo Leste,Ana Costa,Grupo C,Av. Leste,321,Bloco B,Zona Leste,Tipo 3,leste@empresa.com,(11) 4567-8901,(11) 4567-8902,Carlos Mendes,Sandra Reis,Felipe Gomes,Juliana Martins
+LOC005,Polo Oeste,Pedro Lima,Grupo B,Rua Oeste,654,Conjunto 5,Zona Oeste,Tipo 2,oeste@empresa.com,(11) 5678-9012,(11) 5678-9013,Lucia Santos,Roberto Costa,Camila Silva,Diego Ferreira
+

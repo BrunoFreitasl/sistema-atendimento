@@ -1,0 +1,11 @@
+{
+  "locais": [
+    { "id": "LOC001", "polo": "Polo Central", "gestor": "João Silva" },
+    { "id": "LOC002", "polo": "Polo Norte", "gestor": "Maria Fernanda" }
+  ],
+  "interacoes": [],
+  "users": [],
+  "motivosMacro": [],
+  "subMotivos": [],
+  "motivosMicro": []
+}
